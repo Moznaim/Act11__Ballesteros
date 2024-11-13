@@ -1,0 +1,14 @@
+---
+- name: Build Docker File
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: build image from dockerfile
+      community.docker.docker_image:
+        source: build
+        build:
+          path: /home/erwin/Act11__Ballesteros
+          dockerfile: dockerfile.web
+        name: db_web_server
+        tag: latest
+        push: no

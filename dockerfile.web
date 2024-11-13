@@ -1,0 +1,14 @@
+#using UBUNTU
+FROM ubuntu:latest
+
+#install updates
+RUN apt-get update && apt-get install -y \
+	apache2 \
+	mysql-server \
+	&& apt-get clean
+
+#start services
+CMD service mysql start && service apache2 start && tail -f /dev/null
+
+#expose necessary poorts
+EXPOSE 80 3306
